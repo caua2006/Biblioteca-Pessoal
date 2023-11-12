@@ -22,17 +22,16 @@
     </header>
 
     <main class="livro-main">
-        <h1>Lista de Livros</h1>
+        <h1>Lista de Autores e Autoras</h1>
         <button class="icon-btn" id="addBookBtn">
             <i class="fas fa-plus"></i> Adicionar
         </button>
             <table>
                 <thead>
                     <tr>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Data de Publicação</th>
-                        <th>Ações</th>
+                        <th>Nome</th>
+                        <th>Bibliografia</th>
+                        <th>Data de Nascimento</th>
                     </tr>
                 </thead>
                 <tbody id="listaLivros"></tbody>
@@ -42,13 +41,15 @@
     <!-- Popup para Adicionar/Atualizar Livro -->
     <div id="bookPopup" class="hidden">
         <form id="bookForm">
-            <h3>Adicionar/Atualizar Livro</h3>
+            <h3>Adicionar/Atualizar Autor</h3>
             <input type="hidden" id="id_livro">
-            <input type="text" id="titulo" placeholder="Título" required>
-            <input type="text" id="autor" placeholder="Autor" required>
-            <input type="date" id="dataPublicacao" placeholder="Data de Publicação" required>
-            <button type="submit">Salvar</button>
-            <button type="button" id="closePopupBtn">Fechar</button>
+            <input type="text" id="titulo" placeholder="Nome" required>
+            <input type="text" id="autor" placeholder="Bibliografia" required>
+            <input type="date" id="dataPublicacao" placeholder="Data de Nascimento" required>
+            <div>
+                <button type="submit">Salvar</button>
+                <button type="button" id="closePopupBtn">Fechar</button>
+            </div>
         </form>
     </div>
     <img id="ball-cyan" src="images/ball-cyan.svg" alt="">

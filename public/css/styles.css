@@ -105,14 +105,18 @@ span {
 }
 
 #bookPopup form {
-    background: #fff;
+    background: #0F272E;
     padding: 2rem;
     border-radius: 10px;
-    width: 80%;
+    width: 100%;
     max-width: 500px;  /* largura máxima */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+#bookPopup form div {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
 #bookPopup h3 {
     margin-bottom: 1rem;
 }
@@ -122,29 +126,32 @@ span {
 #bookPopup button {
     width: 100%;
     margin-bottom: 1rem;
-    padding: 0.5rem;
+    padding-block: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #bookPopup button[type="submit"] {
-    background: #007BFF;
+    background: #30C0CD;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: none;
 }
 
 #bookPopup button[type="submit"]:hover {
     background: #0056b3;
+
 }
 
 #bookPopup #closePopupBtn {
-    background: #ccc;
+    background: #CEF5FF;
     cursor: pointer;
+    border: none;
 }
 
 #bookPopup #closePopupBtn:hover {
-    background: #aaa;
+    opacity: .5;
 }
 
 .icon-btn {
