@@ -1,51 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 /* Reset básico */
+
 body, h1, h2, h3, ul, li, a {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
+    
+    color: #CEF5FF;
+
+}
+body {
+    height: 100vh;
+    background: #0C1416;
 }
 
 /* Estilização do header */
+
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
-
-header h1 {
-    margin-bottom: 0.5rem;
-}
-
-/* Estilização do menu */
-nav ul {
-    list-style-type: none;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav li {
-    display: inline;
+header nav a {
+    padding: 20px;
+    transition: .5s;
+}
+header nav {
+    padding-left: 30px;
 }
 
-nav a {
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+header a:hover {
+    background: #aaa;
+    border-radius: 20px;
+    padding: 10px;
+    scale: 1.1;
 
-nav a:hover {
-    background-color: #555;
 }
-
-/* Estilo do conteúdo principal */
+/* Estilização do menu */
 main {
-    padding: 2rem;
+    display: flex;
 }
+main div {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+main h1 {
+    font-size: 60px;
+}
+main button {
+    background: #30BFCD;
+    padding-inline: 50px;
+    padding-block: 15px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 24px;
+    border: none;
+    color: #fff;
+}
+main button:hover {
+    opacity: .5;
+}
+span {
+    color: #30BFCD;
+}
+#ball {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+}
+#ball-cyan {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 600px;
+}
+/* Estilo do conteúdo principal */
 
+.livro-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* Estilo para ocultar elementos */
 .hidden {
     display: none;

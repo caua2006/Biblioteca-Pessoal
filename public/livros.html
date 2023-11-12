@@ -13,30 +13,30 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/livros.html">Livros</a></li>
-            </ul>
+            <a href="/">Biblioteca SN</a>
+            <a href="/livros.html">Livros</a>
+            <a href="/livros.html">Autores</a>
+            <a href="/livros.html">Editoras</a>   
         </nav>
-        <h1>Livros</h1>
+        <img src="images/ball-right-top.svg" alt="">
     </header>
 
-    <main>
-<h2>Lista de Livros</h2>
-<button class="icon-btn" id="addBookBtn">
-    <i class="fas fa-plus"></i> Adicionar
-</button>
-    <table>
-        <thead>
-            <tr>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Data de Publicação</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="listaLivros"></tbody>
-    </table>
+    <main class="livro-main">
+        <h1>Lista de Livros</h1>
+        <button class="icon-btn" id="addBookBtn">
+            <i class="fas fa-plus"></i> Adicionar
+        </button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Data de Publicação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="listaLivros"></tbody>
+            </table>
     </main>
 
     <!-- Popup para Adicionar/Atualizar Livro -->
