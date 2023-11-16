@@ -158,7 +158,7 @@ span {
     background: none;
     border: none;
     cursor: pointer;
-    color: #007BFF; /* Cor do ícone */
+    color: #30BFCD; /* Cor do ícone */
     font-size: 1.2rem; /* Tamanho do ícone */
     transition: color 0.3s;
 }
@@ -174,4 +174,9 @@ span {
 
 .icon-btn.delete:hover {
     color: #b02130; /* Cor vermelha ao passar o mouse */
+}
+
+main thead tr, main tbody tr {
+    display: flex;
+    justify-content: space-between;
 }
