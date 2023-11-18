@@ -11,10 +11,13 @@ function displayLivros(livros) {
         const autorCell = row.insertCell(1);
         autorCell.textContent = livro.autor;
 
-        const dataCell = row.insertCell(2);
+        const editoraCell = row.insertCell(2);
+        editoraCell.textContent = livro.editora;
+
+        const dataCell = row.insertCell(3);
         dataCell.textContent = new Date(livro.dataPublicacao).toLocaleDateString();
 
-        const actionsCell = row.insertCell(3);
+        const actionsCell = row.insertCell(4);
         actionsCell.innerHTML = `<button class="icon-btn" onclick='editarLivro(${JSON.stringify(livro)})'>
         <i class="fas fa-edit"></i> Editar
     </button>
@@ -65,11 +68,13 @@ function editarLivro(livro) {
 function limparFormulario(){
     const titulo = document.getElementById("titulo");
     const autor = document.getElementById("autor");
+    const editora = document.getElementById("editora");
     const dataPublicacao = document.getElementById("dataPublicacao");
     const livroId= document.getElementById("id_livro");
 
     titulo.value = "";
     autor.value = "";
+    editora.value = "";
     dataPublicacao.value = "";
     livroId.value = "";
 }
@@ -103,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const titulo = document.getElementById("titulo").value;
         const autor = document.getElementById("autor").value;
+        const editora = document.getElementById("editora").value;
         const dataPublicacao = document.getElementById("dataPublicacao").value;
         const livroId= document.getElementById("id_livro").value;
 
@@ -118,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ titulo, autor, dataPublicacao })
+            body: JSON.stringify({ titulo, autor, editora, dataPublicacao })
         })
         .then(res => {
             if (res.ok && res.status == "201") return res.json();

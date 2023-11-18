@@ -1,28 +1,29 @@
 const pool = require('../config/database');
 
 async function listarAutores() {
-    const [results] = await pool.query('SELECT * FROM livros');
+    const [results] = await pool.query('SELECT * FROM autores');
     return results;
 }
 
-async function adicionarAutores(livro) {
-    const { titulo, autor, dataPublicacao } = livro;
-    const [results] = await pool.query('INSERT INTO livros (titulo, autor, dataPublicacao) VALUES (?, ?, ?)', [titulo, autor, dataPublicacao]);
+async function adicionarAutores(autor) {
+    const { nome, biografia, dataNascimento } = autor;
+    console.log(autor)
+    const [results] = await pool.query('INSERT INTO autores (nome, biografia, dataNascimento) VALUES (?, ?, ?)', [nome, biografia, dataNascimento]);
     return results.insertId;
 }
 
-async function atualizarAutor(id, livro) {
-    const { titulo, autor, dataPublicacao } = livro;
-    await pool.query('UPDATE livros SET titulo = ?, autor = ?, dataPublicacao = ? WHERE id = ?', [titulo, autor, dataPublicacao, id]);
+async function atualizarAutor(id, autor) {
+    const { nome, biografia, dataNascimento } = autor;
+    await pool.query('UPDATE autores SET nome = ?, biografia = ?, dataNascimento = ? WHERE id = ?', [nome, biografia, dataNascimento,id]);
 }
 
 async function deletarAutor(id) {
-    await pool.query('DELETE FROM livros WHERE id = ?', [id]);
+    await pool.query('DELETE FROM autores WHERE id = ?', [id]);
 }
 
 module.exports = {
-    listarLivros,
-    adicionarLivro,
-    atualizarLivro,
-    deletarLivro
+    listarAutores,
+    adicionarAutores,
+    atualizarAutor,
+    deletarAutor
 };

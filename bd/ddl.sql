@@ -10,20 +10,26 @@ use `biblioteca_pessoal`;
 CREATE TABLE IF NOT EXISTS livros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
-    id_autor  NOT NULL,
+    autor varchar(255) not null,
+    editora VARCHAR(255) NOT NULL,
     dataPublicacao DATE NOT NULL
 );
+
 CREATE TABLE IF NOT EXISTS autores (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    autor VARCHAR(255) NOT NULL,
-    dataPublicacao DATE NOT NULL
+    nome VARCHAR(255) NOT NULL,
+    biografia VARCHAR(255) NOT NULL,
+    dataNascimento DATE NOT NULL 
 );
 CREATE TABLE IF NOT EXISTS editoras (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    autor VARCHAR(255) NOT NULL,
-    dataPublicacao DATE NOT NULL
+    nome VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    telefone varchar(11)
 );
 
-
+CREATE TABLE IF NOT EXISTS livros_autor (
+	id int auto_increment primary key,
+    id_livro int not null,
+    id_autor int not null 
+);

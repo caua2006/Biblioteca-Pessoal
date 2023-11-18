@@ -78,6 +78,7 @@ span {
     bottom: 0;
     right: 0;
     width: 600px;
+    z-index: -1;
 }
 /* Estilo do conteúdo principal */
 
@@ -176,7 +177,6 @@ span {
     color: #b02130; /* Cor vermelha ao passar o mouse */
 }
 
-main thead tr, main tbody tr {
-    display: flex;
-    justify-content: space-between;
+main td {
+    text-align: center;
 }

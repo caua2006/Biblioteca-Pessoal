@@ -1,42 +1,42 @@
-function displayAutor(autores) {
-    const tbody = document.getElementById("listaAutor");
+function displayEditoras(editoras) {
+    const tbody = document.getElementById("listaEditoras");
     tbody.innerHTML = ""; // Limpar a tabela
 
-    autores.forEach(autor => {
+    editoras.forEach(editora => {
         const row = tbody.insertRow();
 
         const nomeCell = row.insertCell(0);
-        nomeCell.textContent = autor.nome;
+        nomeCell.textContent = editora.nome;
 
-        const biografiaCell = row.insertCell(1);
-        biografiaCell.textContent = autor.biografia;
+        const enderecoCell = row.insertCell(1);
+        enderecoCell.textContent = editora.endereco;
 
-        const dataCell = row.insertCell(2);
-        dataCell.textContent = new Date(autor.dataNascimento).toLocaleDateString();
+        const telefoneCell = row.insertCell(2);
+        telefoneCell.textContent = editora.telefone;
 
         const actionsCell = row.insertCell(3);
-        actionsCell.innerHTML = `<button class="icon-btn" onclick='editarAutor(${JSON.stringify(autor)})'>
+        actionsCell.innerHTML = `<button class="icon-btn" onclick='editarEditora(${JSON.stringify(editora)})'>
         <i class="fas fa-edit"></i> Editar
     </button>
-    <button class="icon-btn" onclick="deleteAutor(${autor.id})">
+    <button class="icon-btn" onclick="deleteEditora(${editora.id})">
     <i class="fas fa-trash"></i> Excluir
     </button>`;
     });
 }
 
-function fetchAutor() {
-    fetch("/api/autores")
+function fetchEditora() {
+    fetch("/api/editoras")
         .then(res => res.json())
         .then(data => {
-            displayAutor(data);
+            displayEditoras(data);
         })
         .catch(error => {
-            console.error("Erro ao buscar Autor:", error);
+            console.error("Erro ao buscar Editoras:", error);
         });
 }
 
-function deleteAutor(id) {
-    fetch(`/api/autores/${id}`, {
+function deleteEditora(id) {
+    fetch(`/api/editoras/${id}`, {
         method: "DELETE"
     })
     .then(res => {
@@ -44,45 +44,45 @@ function deleteAutor(id) {
         fetchAutor();
     })
     .catch(error => {
-        console.error("Erro ao deletar Autor:", error);
+        console.error("Erro ao deletar Editora:", error);
     });
 }
 
-function editarAutor(autor) {
+function editarEditora(editora) {
     const addBookBtn = document.getElementById("addBookBtn");
     const nome = document.getElementById("nome");
-    const biografia = document.getElementById("biografia");
-    const dataNascimento = document.getElementById("dataNascimento");
-    const autorId= document.getElementById("id_autor");
-    nome.value = autor.nome;
-    biografia.value = autor.biografia;
-    dataNascimento.value = new Date(autor.dataNascimento).toISOString().split('T')[0];
-    autorId.value = autor.id;
+    const endereco = document.getElementById("endereco");
+    const telefone = document.getElementById("telefone");
+    const editoraId= document.getElementById("id_editora");
+    nome.value = editora.nome;
+    endereco.value = editora.endereco;
+    telefone.value = editora.telefone
+    editoraId.value = editora.id;
     addBookBtn.click();
 /**/
 }
 
 function limparFormulario(){
-    const titulo = document.getElementById("nome");
-    const autor = document.getElementById("biografia");
-    const dataPublicacao = document.getElementById("dataNascimento");
-    const livroId= document.getElementById("id_autor");
+    const nome = document.getElementById("nome");
+    const endereco = document.getElementById("endereco");
+    const telefone = document.getElementById("telefone");
+    const editoraId= document.getElementById("id_editora");
 
-    titulo.value = "";
-    autor.value = "";
-    dataPublicacao.value = "";
-    livroId.value = "";
+    nome.value = "";
+    endereco.value = "";
+    telefone.value = "";
+    editoraId.value = "";
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const apiUrl = "/api/autores";
+    const apiUrl = "/api/editoras";
     const bookForm = document.getElementById("bookForm");
     const bookPopup = document.getElementById("bookPopup");
     const addBookBtn = document.getElementById("addBookBtn");
     const closePopupBtn = document.getElementById("closePopupBtn");
 
     // Carregar livros ao carregar a página
-    fetchAutor()
+    fetchEditora()
 
     // Mostrar popup ao clicar no botão "Adicionar Livro"
     addBookBtn.addEventListener("click", function() {
@@ -102,15 +102,15 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
 
         const nome = document.getElementById("nome").value;
-        const biografia = document.getElementById("biografia").value;
-        const dataNascimento = document.getElementById("dataNascimento").value;
-        const autorId= document.getElementById("id_autor").value;
+        const endereco = document.getElementById("endereco").value;
+        const telefone = document.getElementById("telefone").value;
+        const editoraId= document.getElementById("id_editora").value;
 
         let methodSalvar = "POST";
         let apiUrlSalvar = apiUrl;
-        if(autorId != "" && autorId > 0){
+        if(editoraId != "" && editoraId > 0){
             methodSalvar = "PUT";
-            apiUrlSalvar += "/" + autorId;
+            apiUrlSalvar += "/" + editoraId;
         }
     
         fetch(apiUrlSalvar, {
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ nome, biografia, dataNascimento})
+            body: JSON.stringify({ nome, endereco, telefone})
         })
         .then(res => {
             if (res.ok && res.status == "201") return res.json();
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
             throw new Error(res.statusText);
         })
         .then(data => {
-            fetchAutor();
+            fetchEditora();
             limparFormulario();
             closePopupBtn.click();
         })
