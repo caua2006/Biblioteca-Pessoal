@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        console.log("Cheguei no metodo post")
         const id = await AutoresService.adicionarAutores(req.body);
         res.status(201).json({ id });
     } catch (error) {

@@ -124,6 +124,8 @@ span {
 
 #bookPopup input[type="text"],
 #bookPopup input[type="date"],
+#bookPopup input[type="tel"],
+select,
 #bookPopup button {
     width: 100%;
     margin-bottom: 1rem;

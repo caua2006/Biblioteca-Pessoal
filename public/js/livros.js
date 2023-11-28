@@ -1,3 +1,32 @@
+function carregarAutores() {
+    fetch("/api/autores")
+    .then(response => response.json())
+    .then(autores => {
+      const autorSelect = document.getElementById("autor");
+      autores.forEach(autor => {
+        const option = document.createElement("option");
+        option.value = autor.id;
+        option.textContent = autor.nome;
+        autorSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Erro ao carregar autores:", error));
+  }
+  
+  function carregarEditoras() {
+    fetch("/api/editoras")
+    .then(response => response.json())
+    .then(editoras => {
+      const editoraSelect = document.getElementById("editora");
+      editoras.forEach(editora => {
+        const option = document.createElement("option");
+        option.value = editora.id;
+        option.textContent = editora.nome;
+        editoraSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Erro ao carregar editoras:", error));
+  }
 function displayLivros(livros) {
     const tbody = document.getElementById("listaLivros");
     tbody.innerHTML = ""; // Limpar a tabela
@@ -9,10 +38,10 @@ function displayLivros(livros) {
         tituloCell.textContent = livro.titulo;
 
         const autorCell = row.insertCell(1);
-        autorCell.textContent = livro.autor;
+        autorCell.textContent = livro.nomeAutor;
 
         const editoraCell = row.insertCell(2);
-        editoraCell.textContent = livro.editora;
+        editoraCell.textContent = livro.nomeEditora;
 
         const dataCell = row.insertCell(3);
         dataCell.textContent = new Date(livro.dataPublicacao).toLocaleDateString();
@@ -87,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const closePopupBtn = document.getElementById("closePopupBtn");
 
     // Carregar livros ao carregar a página
-    fetchLivros()
+    fetchLivros();
+    carregarAutores();
+    carregarEditoras();
 
     // Mostrar popup ao clicar no botão "Adicionar Livro"
     addBookBtn.addEventListener("click", function() {
