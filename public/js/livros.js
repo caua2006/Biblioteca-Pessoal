@@ -13,7 +13,7 @@ function carregarAutores() {
     .catch(error => console.error("Erro ao carregar autores:", error));
   }
   
-  function carregarEditoras() {
+function carregarEditoras() {
     fetch("/api/editoras")
     .then(response => response.json())
     .then(editoras => {
@@ -84,10 +84,12 @@ function editarLivro(livro) {
     const addBookBtn = document.getElementById("addBookBtn");
     const titulo = document.getElementById("titulo");
     const autor = document.getElementById("autor");
+    const editora = document.getElementById("editora");
     const dataPublicacao = document.getElementById("dataPublicacao");
     const livroId= document.getElementById("id_livro");
     titulo.value = livro.titulo;
-    autor.value = livro.autor;
+    autor.value = livro.nomeAutor;
+    editora.value = livro.nomeEditora;
     dataPublicacao.value = new Date(livro.dataPublicacao).toISOString().split('T')[0];
     livroId.value = livro.id;
     addBookBtn.click();

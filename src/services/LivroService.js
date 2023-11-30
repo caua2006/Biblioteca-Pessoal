@@ -10,7 +10,7 @@ async function listarLivros() {
             id: livro.id,
             titulo: livro.titulo,
             dataPublicacao: livro.dataPublicacao,
-            nomexAutor: autores.filter(autor => {
+            nomeAutor: autores.filter(autor => {
                 if(autor.id === livro.id_autor) {
                     return autor.nome
                 }
